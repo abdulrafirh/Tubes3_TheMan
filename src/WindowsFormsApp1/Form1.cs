@@ -8,6 +8,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using AlgorithmNamespace;
 
 namespace WindowsFormsApp1
 {
@@ -18,7 +19,7 @@ namespace WindowsFormsApp1
             InitializeComponent();
         }
 
-        string info = "Allahu akbar!";
+        string info = Algoritme.hw();
         string selectedImagePath = "";
 
         private void button1_Click(object sender, EventArgs e)
@@ -31,7 +32,6 @@ namespace WindowsFormsApp1
                 string filePath = openFileDialog1.FileName;
                 byte[] imageBytes = File.ReadAllBytes(filePath); // panggil fungsi Rayhan
                 selectedImagePath = filePath;
-                info = "info";
                 Console.WriteLine("Selected image path: " + selectedImagePath);
             }
         }
