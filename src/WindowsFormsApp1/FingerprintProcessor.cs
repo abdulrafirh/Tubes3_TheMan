@@ -221,8 +221,58 @@ public class FingerprintProcessor
 
         return result.ToString();
     }
+    public static float calculateSimilarity(string text1, string text2)
+    {
+        int lcs = longestCommonSS(text1, text2);
+        int len1 = text1.Length;
+        int len2 = text2.Length;
 
-/*    static void Main(string[] args)
+        return ((2.0f * lcs) / (len1 + len2))*100;
+    }
+
+    public static void testLCS(){
+        Stopwatch stopwatch = new Stopwatch();
+        stopwatch.Start();
+        string imageSource = "../willdeletelater/test.BMP";
+        string folderTarget = "../Altered-Easy";
+        string[] files = Directory.GetFiles(folderTarget);
+
+        string binarySource = bmpToBinary(imageSource);
+        string textSource = binaryToAscii(binarySource);
+        string patternSource = getMiddle16(textSource);
+
+        List<float> similarities = new List<float>();
+        List <string> fileNames = new List<string>();
+        int i = 0;
+        foreach (string file in files)
+        {
+            string binaryTarget = bmpToBinary(file);
+            string textTarget = binaryToAscii(binaryTarget);
+            string patternTarget = getMiddle16(textTarget);
+
+            float similarity = calculateSimilarity(patternSource, patternTarget);
+            // append to similarities array
+            similarities.Add(similarity);
+            fileNames.Add(file);
+            i++;
+            if(i%500==0){
+                Console.WriteLine("Processed: " + i);
+            }
+            // Console.WriteLine("Similarity: " + similarity);
+        }
+        stopwatch.Stop();
+        TimeSpan timeElapsed = stopwatch.Elapsed;
+        similarities.Sort();
+
+        // Console.WriteLine("Max Similarity: " + similarities[similarities.Count - 1]);
+        for( i = 0;i < 50 ; i++ ){
+            Console.WriteLine("Similarity: " + similarities[similarities.Count - 1 - i]);
+        }
+        Console.WriteLine("Time Elapsed: " + timeElapsed);
+    }
+
+
+   static void Main(string[] args)
     {
         Console.WriteLine("Current Directory: " + System.IO.Directory.GetCurrentDirectory());
         string imagePath = "../willdeletelater/test.BMP";
