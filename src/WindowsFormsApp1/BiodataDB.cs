@@ -16,7 +16,7 @@ namespace WindowsFormsApp1
 
             if (OpenConnection())
             {
-                MySqlCommand cmd = new MySqlCommand("INSERT INTO Biodata VALUES (@NIK, @Nama, @Tempat_lahir, @Tanggal_lahir, @Jenis_kelamin, @Golongan_darah, @Alamat, @Agama, @Status_perkawinan, @Pekerjaan, @Kewarganegaraan)", connection);
+                MySqlCommand cmd = new MySqlCommand("INSERT INTO biodata VALUES (@NIK, @Nama, @Tempat_lahir, @Tanggal_lahir, @Jenis_kelamin, @Golongan_darah, @Alamat, @Agama, @Status_perkawinan, @Pekerjaan, @Kewarganegaraan)", connection);
                 cmd.Parameters.AddWithValue("NIK", b.NIK);
                 cmd.Parameters.AddWithValue("Nama", b.Nama);
                 cmd.Parameters.AddWithValue("Tempat_lahir", b.Tempat_lahir);
@@ -37,22 +37,20 @@ namespace WindowsFormsApp1
         {
             if (OpenConnection())
             {
-                using (MySqlCommand cmd = new MySqlCommand("SELECT * FROM Biodata WHERE nama = @Nama", connection))
+                using (MySqlCommand cmd = new MySqlCommand("SELECT * FROM biodata WHERE nama = @Nama", connection))
                 {
-                    cmd.Parameters.AddWithValue("@Nama", nama);
+                    cmd.Parameters.AddWithValue("Nama", nama);
                     using (var reader = cmd.ExecuteReader())
                     {
                         if (reader.HasRows)
                         {
                             reader.Read();
-                            CloseConnection();
-                            return new Biodata
+                            var theMan = new Biodata
                             {
                                 NIK = reader.GetString("NIK"),
                                 Nama = reader.GetString("nama"),
                                 Tempat_lahir = reader.IsDBNull(2) ? null : reader.GetString("tempat_lahir"),
                                 Tanggal_lahir = reader.IsDBNull(3) ? new DateTime() : reader.GetDateTime("tanggal_lahir"),
-
                                 Gender = reader.GetString("jenis_kelamin") == "Laki-Laki" ? Bogus.DataSets.Name.Gender.Male : Bogus.DataSets.Name.Gender.Female,
                                 Golongan_darah = reader.IsDBNull(5) ? null : reader.GetString("golongan_darah"),
                                 Alamat = reader.IsDBNull(6) ? null : reader.GetString("alamat"),
@@ -61,6 +59,8 @@ namespace WindowsFormsApp1
                                 Pekerjaan = reader.IsDBNull(8) ? null : reader.GetString("pekerjaan"),
                                 Kewarganegaraan = reader.IsDBNull(9) ? null : reader.GetString("kewarganegaraan"),
                             };
+                            CloseConnection();
+                            return theMan;
                         }
                         else
                         {
@@ -71,6 +71,40 @@ namespace WindowsFormsApp1
                 }
             }
             return null;
+        }
+
+        public static List<Biodata> All()
+        {
+            List<Biodata> biodata = new List<Biodata>();
+
+            if (OpenConnection())
+            {
+                using (MySqlCommand cmd = new MySqlCommand("SELECT * FROM biodata", connection))
+                {
+                    using (var reader = cmd.ExecuteReader())
+                    {
+                        while (reader.Read())
+                        {
+                            biodata.Add(new Biodata
+                            {
+                                NIK = reader.GetString("NIK"),
+                                Nama = reader.GetString("nama"),
+                                Tempat_lahir = reader.IsDBNull(2) ? null : reader.GetString("tempat_lahir"),
+                                Tanggal_lahir = reader.IsDBNull(3) ? new DateTime() : reader.GetDateTime("tanggal_lahir"),
+                                Gender = reader.GetString("jenis_kelamin") == "Laki-Laki" ? Bogus.DataSets.Name.Gender.Male : Bogus.DataSets.Name.Gender.Female,
+                                Golongan_darah = reader.IsDBNull(5) ? null : reader.GetString("golongan_darah"),
+                                Alamat = reader.IsDBNull(6) ? null : reader.GetString("alamat"),
+                                Agama = reader.IsDBNull(7) ? null : reader.GetString("agama"),
+                                Status_perkawinan = reader.GetString("status_perkawinan"),
+                                Pekerjaan = reader.IsDBNull(8) ? null : reader.GetString("pekerjaan"),
+                                Kewarganegaraan = reader.IsDBNull(9) ? null : reader.GetString("kewarganegaraan"),
+                            });
+                        }
+                    }
+                }
+                CloseConnection();
+            }
+            return biodata;
         }
 
         public static void Clear() {

@@ -28,14 +28,15 @@ namespace WindowsFormsApp1
             {
                 using (MySqlCommand cmd = new MySqlCommand("SELECT nama FROM sidik_jaki WHERE berkas_citra = @berkas_citra", connection))
                 {
-                    cmd.Parameters.AddWithValue("@berkas_citra", berkas_citra);
+                    cmd.Parameters.AddWithValue("berkas_citra", berkas_citra);
                     using (var reader = cmd.ExecuteReader())
                     {
                         if (reader.HasRows)
                         {
                             reader.Read();
+                            var theName = reader.GetString(0);
                             CloseConnection();
-                            return reader.GetString(0);
+                            return theName;
                         }
                         else
                         {

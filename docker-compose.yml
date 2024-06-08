@@ -1,0 +1,17 @@
+version: '3.8'
+
+services:
+  mariadb:
+    image: mariadb:latest
+    container_name: tubes3db
+    environment:
+      MYSQL_ROOT_PASSWORD: thefunni
+      MYSQL_DATABASE: tubes3
+    ports:
+      - "12345:3306"
+    volumes:
+      - container-volume:/var/lib/mysql
+      - ./tubes3_stima24.sql:/docker-entrypoint-initdb.d/init.sql
+  
+volumes:
+  container-volume:
