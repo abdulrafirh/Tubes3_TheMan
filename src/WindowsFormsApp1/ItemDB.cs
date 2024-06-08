@@ -19,9 +19,10 @@ namespace WindowsFormsApp1
             string server = "localhost";
             string database = "tubes3";
             string uid = "root";
-            string password = "isPain";
+            string password = "thefunni";
+            string port = "12345";
             string connectionString;
-            connectionString = "SERVER=" + server + ";" + "DATABASE=" +
+            connectionString = "SERVER=" + server + ";" "PORT=" + port ";" + "DATABASE=" +
             database + ";" + "UID=" + uid + ";" + "PASSWORD=" + password + ";";
 
             connection = new MySqlConnection(connectionString);

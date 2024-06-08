@@ -18,7 +18,7 @@ namespace WindowsFormsApp1
         private readonly Dictionary<Char, Char> alayConverter = new Dictionary<Char, Char>
         {
             {'A', '4'}, {'a', '4'},
-            {'b', '8'}, {'B', '8'},
+            {'b', 'b'}, {'B', 'B'},
             {'c', 'c'}, {'C', 'C'},
             {'d', 'd'}, {'D', 'D'},
             {'e', '3'}, {'E', '3'},
@@ -36,7 +36,7 @@ namespace WindowsFormsApp1
             {'q', 'q'}, {'Q', 'Q'},
             {'r', 'r'}, {'R', 'R'},
             {'s', '5'}, {'S', '5'},
-            {'t', '7'}, {'T', '7'},
+            {'t', 't'}, {'T', 'T'},
             {'u', 'u'}, {'U', 'U'},
             {'v', 'v'}, {'V', 'V'},
             {'w', 'w'}, {'W', 'W'},
@@ -68,7 +68,7 @@ namespace WindowsFormsApp1
                     }
                     else if (roll < 50)
                     {
-                        result[i] = Char.ToUpper(result[i]);
+                        result[i] = Char.ToUpper(result[i]) == result[i] ? Char.ToLower(result[i]) : Char.ToUpper(result[i]);
                     }
                 }
                 else if (result[i] != ' '){
@@ -78,7 +78,7 @@ namespace WindowsFormsApp1
                     }
                     else if (roll < 70)
                     {
-                        result[i] = Char.ToUpper(result[i]);
+                        result[i] = Char.ToUpper(result[i]) == result[i] ? Char.ToLower(result[i]) : Char.ToUpper(result[i]);
                     }
                 }
             }
