@@ -22,7 +22,7 @@ namespace WindowsFormsApp1
             string password = "thefunni";
             string port = "12345";
             string connectionString;
-            connectionString = "SERVER=" + server + ";" "PORT=" + port ";" + "DATABASE=" +
+            connectionString = "SERVER=" + server + ";" + "PORT=" + port + ";" + "DATABASE=" +
             database + ";" + "UID=" + uid + ";" + "PASSWORD=" + password + ";";
 
             connection = new MySqlConnection(connectionString);
