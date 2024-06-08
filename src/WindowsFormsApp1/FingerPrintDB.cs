@@ -26,7 +26,7 @@ namespace WindowsFormsApp1
         {
             if (OpenConnection())
             {
-                using (MySqlCommand cmd = new MySqlCommand("SELECT nama FROM sidik_jaki WHERE berkas_citra = @berkas_citra", connection))
+                using (MySqlCommand cmd = new MySqlCommand("SELECT nama FROM sidik_jari WHERE berkas_citra = @berkas_citra", connection))
                 {
                     cmd.Parameters.AddWithValue("berkas_citra", berkas_citra);
                     using (var reader = cmd.ExecuteReader())

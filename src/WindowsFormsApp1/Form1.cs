@@ -19,13 +19,14 @@ namespace WindowsFormsApp1
         public Form1()
         {
             init_stuff();
-            Console.WriteLine("tes2");
         }
 
+        string alg = "kmp";
         List<string> asciis;
         List<string> paths;
         string info = Algoritme.hw();
         string selectedImagePath = "";
+        string prefix = "./../../../../data/SOCOfing/";
 
         private async void init_stuff()
         {
@@ -39,7 +40,7 @@ namespace WindowsFormsApp1
             await Task.Run(() => init_other_stuff(ls));
             ls.Close();
             InitializeComponent();
-
+            this.TopMost = true;
         }
 
         private void init_other_stuff(LoadingScreen ls)
@@ -50,7 +51,7 @@ namespace WindowsFormsApp1
                 List<string> image_paths = FindFiles.GetRelativeFilePaths(Path.GetFullPath("./../../../../data/SOCOfing/Real"), i + "__*");
                 foreach (string path in image_paths)
                 {
-                    string binary = FingerprintProcessor.bmpToBinary("./../../../../data/SOCOfing/" + path);
+                    string binary = FingerprintProcessor.bmpToBinary(prefix + path);
                     string ascii = FingerprintProcessor.binaryToAscii(binary);
                     asciis.Add(ascii);
                     paths.Add(path);
@@ -60,7 +61,7 @@ namespace WindowsFormsApp1
             i = 700;
         }
 
-        private void button1_Click(object sender, EventArgs e)
+        private void ImageInputButton_Click(object sender, EventArgs e)
         {
             openFileDialog1.Filter = "Image Files|*.jpg;*.jpeg;*.png;*.bmp;*.gif";
             openFileDialog1.Title = "Select an Image";
@@ -73,25 +74,24 @@ namespace WindowsFormsApp1
             }
         }
 
-        private void textBox1_TextChanged(object sender, EventArgs e) {}
-
-        private void button1_Click_1(object sender, EventArgs e)
+        private void SearchButton_Click(object sender, EventArgs e)
         {
 
+            string most_similar_image_path = "";
             bool found = false;
-            string pattern = FingerprintProcessor.bmpToBinary(selectedImagePath);
-            foreach (string binary in asciis)
+            string pattern = FingerprintProcessor.binaryToAscii(FingerprintProcessor.bmpToBinary(selectedImagePath));
+            for (int i = 0; i < asciis.Count; i++)
             {
-                /**
-                 * 
-                 * TODO: tambahin toggle buat boyer moore 
-                 * 
-                */
-                found = FingerprintProcessor.kmpSearch(binary, pattern);
-                if (found) break;
+                if (this.alg=="kmp") found = FingerprintProcessor.kmpSearch(asciis[i], pattern);
+                else found = FingerprintProcessor.bmSearch(asciis[i], pattern);
+
+                if (found)
+                {
+                    most_similar_image_path = paths[i];
+                    break;
+                }
             }
 
-            string most_similar_image_path = "";
             int LCS_length = 0;
             if (!found)
             {
@@ -106,18 +106,21 @@ namespace WindowsFormsApp1
                 }
             }
 
+            info = "Most similar find: " + FingerPrintDB.Find(most_similar_image_path);
+            if (!most_similar_image_path.Equals(""))
+            {
+                InputImage.ImageLocation = selectedImagePath;
+                OutputImage.ImageLocation = prefix + most_similar_image_path;
+            }
+
             if (found)
             {
-                if (!selectedImagePath.Equals(""))
-                {
-                    pictureBox1.ImageLocation = selectedImagePath;
-                }
-                info = "Found!";
+                info += "\nSimilarity: Perfect Match!!!";
                 
             }
             else
             {
-                info = "Not found!";
+                info += "\nSimilarity: " + (100 * LCS_length) / asciis[0].Length + "%";
             }
 
             richTextBox1.Visible = true;
@@ -128,6 +131,20 @@ namespace WindowsFormsApp1
         {
             this.Visible = true;
             this.WindowState = FormWindowState.Normal;
+        }
+
+        private void AlgToggle_Click(object sender, EventArgs e)
+        {
+            if (this.alg == "kmp")
+            {
+                AlgToggle.Text = "Current Algorithm: BM\n(Click to toggle)";
+                this.alg = "bm";
+            } 
+            else
+            {
+                AlgToggle.Text = "Current Algorithm: KMP\n(Click to toggle)";
+                this.alg = "kmp";
+            }
         }
     }
 }
