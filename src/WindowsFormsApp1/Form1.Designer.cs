@@ -36,6 +36,9 @@
             this.richTextBox1 = new System.Windows.Forms.RichTextBox();
             this.InputImage = new System.Windows.Forms.PictureBox();
             this.AlgToggle = new System.Windows.Forms.Button();
+            this.YourImageText = new System.Windows.Forms.RichTextBox();
+            this.SearchResultText = new System.Windows.Forms.RichTextBox();
+            this.PerfCounterText = new System.Windows.Forms.RichTextBox();
             ((System.ComponentModel.ISupportInitialize)(this.OutputImage)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.InputImage)).BeginInit();
             this.SuspendLayout();
@@ -77,6 +80,9 @@
             // 
             // OutputImage
             // 
+            this.OutputImage.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.OutputImage.Cursor = System.Windows.Forms.Cursors.IBeam;
             this.OutputImage.Location = new System.Drawing.Point(464, 260);
             this.OutputImage.Name = "OutputImage";
@@ -86,15 +92,18 @@
             // 
             // richTextBox1
             // 
-            this.richTextBox1.Location = new System.Drawing.Point(190, 223);
+            this.richTextBox1.Location = new System.Drawing.Point(190, 242);
             this.richTextBox1.Name = "richTextBox1";
-            this.richTextBox1.Size = new System.Drawing.Size(254, 160);
+            this.richTextBox1.Size = new System.Drawing.Size(247, 160);
             this.richTextBox1.TabIndex = 5;
             this.richTextBox1.Text = "";
             this.richTextBox1.Visible = false;
             // 
             // InputImage
             // 
+            this.InputImage.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.InputImage.Location = new System.Drawing.Point(40, 260);
             this.InputImage.Name = "InputImage";
             this.InputImage.Size = new System.Drawing.Size(133, 123);
@@ -103,19 +112,66 @@
             // 
             // AlgToggle
             // 
-            this.AlgToggle.Text = "Now using: KMP\n(Click to toggle)";
             this.AlgToggle.Location = new System.Drawing.Point(215, 118);
             this.AlgToggle.Name = "AlgToggle";
             this.AlgToggle.Size = new System.Drawing.Size(198, 43);
             this.AlgToggle.TabIndex = 7;
+            this.AlgToggle.Text = "Now using: KMP\n(Click to toggle)";
             this.AlgToggle.UseVisualStyleBackColor = true;
             this.AlgToggle.Click += new System.EventHandler(this.AlgToggle_Click);
+            // 
+            // YourImageText
+            // 
+            this.YourImageText.BackColor = System.Drawing.SystemColors.Control;
+            this.YourImageText.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.YourImageText.Font = new System.Drawing.Font("Cambria Math", 12F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.YourImageText.HideSelection = false;
+            this.YourImageText.Location = new System.Drawing.Point(40, 227);
+            this.YourImageText.Name = "YourImageText";
+            this.YourImageText.ReadOnly = true;
+            this.YourImageText.ScrollBars = System.Windows.Forms.RichTextBoxScrollBars.None;
+            this.YourImageText.Size = new System.Drawing.Size(133, 29);
+            this.YourImageText.TabIndex = 8;
+            this.YourImageText.Text = "YOUR IMAGE:";
+            this.YourImageText.Visible = false;
+            // 
+            // SearchResultText
+            // 
+            this.SearchResultText.BackColor = System.Drawing.SystemColors.Control;
+            this.SearchResultText.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.SearchResultText.Font = new System.Drawing.Font("Cambria Math", 12F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))));
+            this.SearchResultText.HideSelection = false;
+            this.SearchResultText.Location = new System.Drawing.Point(443, 227);
+            this.SearchResultText.Name = "SearchResultText";
+            this.SearchResultText.ReadOnly = true;
+            this.SearchResultText.ScrollBars = System.Windows.Forms.RichTextBoxScrollBars.None;
+            this.SearchResultText.Size = new System.Drawing.Size(176, 29);
+            this.SearchResultText.TabIndex = 9;
+            this.SearchResultText.Text = "SEARCH RESULT:";
+            this.SearchResultText.Visible = false;
+            // 
+            // PerfCounterText
+            // 
+            this.PerfCounterText.BackColor = System.Drawing.SystemColors.Control;
+            this.PerfCounterText.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.PerfCounterText.HideSelection = false;
+            this.PerfCounterText.Location = new System.Drawing.Point(440, 408);
+            this.PerfCounterText.Name = "PerfCounterText";
+            this.PerfCounterText.ReadOnly = true;
+            this.PerfCounterText.ScrollBars = System.Windows.Forms.RichTextBoxScrollBars.None;
+            this.PerfCounterText.Size = new System.Drawing.Size(179, 20);
+            this.PerfCounterText.TabIndex = 10;
+            this.PerfCounterText.Text = "The last calculation took: -";
+            this.PerfCounterText.Visible = false;
             // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(620, 429);
+            this.Controls.Add(this.PerfCounterText);
+            this.Controls.Add(this.SearchResultText);
+            this.Controls.Add(this.YourImageText);
             this.Controls.Add(this.AlgToggle);
             this.Controls.Add(this.InputImage);
             this.Controls.Add(this.richTextBox1);
@@ -142,6 +198,9 @@
         private System.Windows.Forms.RichTextBox richTextBox1;
         private System.Windows.Forms.PictureBox InputImage;
         private System.Windows.Forms.Button AlgToggle;
+        private System.Windows.Forms.RichTextBox SearchResultText;
+        private System.Windows.Forms.RichTextBox YourImageText;
+        private System.Windows.Forms.RichTextBox PerfCounterText;
     }
 }
 

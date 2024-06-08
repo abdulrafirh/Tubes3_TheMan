@@ -11,6 +11,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using AlgorithmNamespace;
 using System.Threading.Tasks;
+using System.Diagnostics;
 
 namespace WindowsFormsApp1
 {
@@ -80,6 +81,9 @@ namespace WindowsFormsApp1
             string most_similar_image_path = "";
             bool found = false;
             string pattern = FingerprintProcessor.binaryToAscii(FingerprintProcessor.bmpToBinary(selectedImagePath));
+
+            Stopwatch stopwatch = new Stopwatch();
+            stopwatch.Start();
             for (int i = 0; i < asciis.Count; i++)
             {
                 if (this.alg=="kmp") found = FingerprintProcessor.kmpSearch(asciis[i], pattern);
@@ -88,6 +92,7 @@ namespace WindowsFormsApp1
                 if (found)
                 {
                     most_similar_image_path = paths[i];
+                    stopwatch.Stop();
                     break;
                 }
             }
@@ -104,7 +109,11 @@ namespace WindowsFormsApp1
                         most_similar_image_path = paths[i];
                     }
                 }
+                stopwatch.Stop();
             }
+
+            string time = stopwatch.Elapsed.TotalMilliseconds.ToString("F2");
+            
 
             string stupid_name = FingerPrintDB.Find(most_similar_image_path);
             string regex_pattern = NameRegex.convertToRegexPattern(stupid_name);
@@ -123,6 +132,8 @@ namespace WindowsFormsApp1
             {
                 InputImage.ImageLocation = selectedImagePath;
                 OutputImage.ImageLocation = prefix + most_similar_image_path;
+                InputImage.SizeMode = PictureBoxSizeMode.CenterImage;
+                OutputImage.SizeMode = PictureBoxSizeMode.CenterImage;
             }
 
             if (found)
@@ -135,7 +146,24 @@ namespace WindowsFormsApp1
             }
 
             richTextBox1.Visible = true;
+            YourImageText.Visible = true;
+            SearchResultText.Visible = true;
+            PerfCounterText.Visible = true;
+
             richTextBox1.Text = info;
+            YourImageText.SelectAll();
+            YourImageText.SelectionAlignment = HorizontalAlignment.Center;
+            YourImageText.Select(0, 0);
+
+            SearchResultText.SelectAll();
+            SearchResultText.SelectionAlignment = HorizontalAlignment.Center;
+            SearchResultText.Select(0, 0);
+
+            PerfCounterText.Text = "The last calculation took: " + time + " ms";
+            PerfCounterText.SelectAll();
+            PerfCounterText.SelectionAlignment = HorizontalAlignment.Right;
+            PerfCounterText.Select(0, 0);
+
         }
 
         private void Form1_Load(object sender, EventArgs e)
