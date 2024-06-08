@@ -24,7 +24,7 @@ namespace WindowsFormsApp1
 
         private async void init_stuff()
         {
-            int file_count = 600;
+            int file_count = 6000;
             binaries = new List<string>();
             paths = new List<string>();
 
@@ -48,8 +48,9 @@ namespace WindowsFormsApp1
                     binaries.Add(binary);
                     paths.Add(path);
                 }
-                ls.update_percentage();
+                ls.update_percentage(10);
             }
+            i = 700;
         }
 
         List<string> binaries;

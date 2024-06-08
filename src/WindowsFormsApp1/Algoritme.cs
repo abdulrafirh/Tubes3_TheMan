@@ -25,7 +25,9 @@ namespace AlgorithmNamespace
                 throw new FileNotFoundException($"The file {imagePath} does not exist.");
             }
             const int threshold = 70;
-            Bitmap img = new Bitmap(imagePath);
+            Bitmap temp = new Bitmap(imagePath);
+            LockBitmap img = new LockBitmap(temp);
+            img.LockBits();
             int width = img.Width;
             int height = img.Height;
             StringBuilder binaryString = new StringBuilder();
@@ -48,6 +50,7 @@ namespace AlgorithmNamespace
                 }
             }
 
+            img.UnlockBits();
             return binaryString.ToString();
         }
 

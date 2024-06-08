@@ -27,9 +27,9 @@ namespace WindowsFormsApp1
             this.richTextBox1.Text = "Loading Fingerprints...\n";
         }
 
-        public void update_percentage()
+        public void update_percentage(int done_increment = 1)
         {
-            done_count++;
+            done_count += done_increment;
             this.percentage = (100*this.done_count) / this.total;
 
             string temp = "Loading Fingerprints...\n";
