@@ -22,10 +22,15 @@ namespace WindowsFormsApp1
             Console.WriteLine("tes2");
         }
 
+        List<string> asciis;
+        List<string> paths;
+        string info = Algoritme.hw();
+        string selectedImagePath = "";
+
         private async void init_stuff()
         {
             int file_count = 6000;
-            binaries = new List<string>();
+            asciis = new List<string>();
             paths = new List<string>();
 
             LoadingScreen ls = new LoadingScreen(file_count);
@@ -33,6 +38,7 @@ namespace WindowsFormsApp1
             ls.Show();
             await Task.Run(() => init_other_stuff(ls));
             ls.Close();
+            InitializeComponent();
 
         }
 
@@ -45,18 +51,14 @@ namespace WindowsFormsApp1
                 foreach (string path in image_paths)
                 {
                     string binary = FingerprintProcessor.bmpToBinary("./../../../../data/SOCOfing/" + path);
-                    binaries.Add(binary);
+                    string ascii = FingerprintProcessor.binaryToAscii(binary);
+                    asciis.Add(ascii);
                     paths.Add(path);
                 }
                 ls.update_percentage(10);
             }
             i = 700;
         }
-
-        List<string> binaries;
-        List<string> paths;
-        string info = Algoritme.hw();
-        string selectedImagePath = "";
 
         private void button1_Click(object sender, EventArgs e)
         {
@@ -78,7 +80,7 @@ namespace WindowsFormsApp1
 
             bool found = false;
             string pattern = FingerprintProcessor.bmpToBinary(selectedImagePath);
-            foreach (string binary in binaries)
+            foreach (string binary in asciis)
             {
                 /**
                  * 
@@ -93,9 +95,9 @@ namespace WindowsFormsApp1
             int LCS_length = 0;
             if (!found)
             {
-                for (int i = 0; i < binaries.Count; i++)
+                for (int i = 0; i < asciis.Count; i++)
                 {
-                    int lcs = FingerprintProcessor.longestCommonSS(binaries[i], pattern);
+                    int lcs = FingerprintProcessor.longestCommonSS(asciis[i], pattern);
                     if (lcs > LCS_length)
                     {
                         LCS_length = lcs;

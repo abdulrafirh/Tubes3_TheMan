@@ -25,6 +25,8 @@ namespace WindowsFormsApp1
         private void LoadingScreen_Load(object sender, EventArgs e)
         {
             this.richTextBox1.Text = "Loading Fingerprints...\n";
+            this.richTextBox1.SelectAll();
+            this.richTextBox1.SelectionAlignment = HorizontalAlignment.Center;
         }
 
         public void update_percentage(int done_increment = 1)
@@ -35,8 +37,9 @@ namespace WindowsFormsApp1
             string temp = "Loading Fingerprints...\n";
             temp += done_count.ToString();
             temp += "/";
+            temp += total.ToString();
             temp += " images done ";
-            temp += "(" + this.percentage.ToString() + "%).";
+            temp += "(" + this.percentage.ToString() + "%)";
 
             if (this.richTextBox1.InvokeRequired)
             {
