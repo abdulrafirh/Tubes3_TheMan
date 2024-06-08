@@ -107,6 +107,27 @@ namespace WindowsFormsApp1
             return biodata;
         }
 
+        public static List<string> AllNames()
+        {
+            List<string> daftar_nama = new List<string>();
+
+            if (OpenConnection())
+            {
+                using (MySqlCommand cmd = new MySqlCommand("SELECT * FROM biodata", connection))
+                {
+                    using (var reader = cmd.ExecuteReader())
+                    {
+                        while (reader.Read())
+                        {
+                            daftar_nama.Add(reader.GetString("nama"));
+                        }
+                    }
+                }
+                CloseConnection();
+            }
+            return daftar_nama;
+        }
+
         public static void Clear() {
             if (OpenConnection())
             {
@@ -115,5 +136,6 @@ namespace WindowsFormsApp1
                 CloseConnection();
             }
         }
+
     }
 }

@@ -19,5 +19,20 @@ namespace WindowsFormsApp1
         public String Status_perkawinan { get; set; }
         public string Pekerjaan { get; set; }
         public string Kewarganegaraan { get; set; }
+
+        public override string ToString()
+        {
+            return $"NIK: {NIK}\n" +
+                   $"Nama: {Nama}\n" +
+                   $"Tempat_lahir: {Tempat_lahir}\n" +
+                   $"Tanggal_lahir: {Tanggal_lahir.ToString("yyyy-MM-dd")}\n" +
+                   $"Gender: {Gender}\n" +
+                   $"Golongan_darah: {Golongan_darah}\n" +
+                   $"Alamat: {Alamat}\n" +
+                   $"Agama: {Agama}\n" +
+                   $"Status_perkawinan: {Status_perkawinan}\n" +
+                   $"Pekerjaan: {Pekerjaan}\n" +
+                   $"Kewarganegaraan: {Kewarganegaraan}";
+        }
     }
 }

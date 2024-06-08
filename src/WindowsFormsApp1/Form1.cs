@@ -106,7 +106,19 @@ namespace WindowsFormsApp1
                 }
             }
 
-            info = "Most similar find: " + FingerPrintDB.Find(most_similar_image_path);
+            string stupid_name = FingerPrintDB.Find(most_similar_image_path);
+            string regex_pattern = NameRegex.convertToRegexPattern(stupid_name);
+            List<string> daftar_nama = BiodataDB.AllNames();
+            Biodata biodata_result = new Biodata();
+            foreach (string nama in daftar_nama)
+            {
+                if (NameRegex.isMatch(nama, regex_pattern))
+                {
+                    biodata_result = BiodataDB.Find(nama);
+                }
+            }
+
+            info = "Most similar find:\n" + biodata_result.ToString();
             if (!most_similar_image_path.Equals(""))
             {
                 InputImage.ImageLocation = selectedImagePath;
@@ -115,8 +127,7 @@ namespace WindowsFormsApp1
 
             if (found)
             {
-                info += "\nSimilarity: Perfect Match!!!";
-                
+                info += "\nSimilarity: Perfect Match!!!";   
             }
             else
             {
