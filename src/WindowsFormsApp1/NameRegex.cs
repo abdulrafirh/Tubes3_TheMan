@@ -24,7 +24,7 @@ public class NameRegex
     }
 
     public static string addOptionalVowel(string input){
-        return Regex.Replace(input, @"(\B\w)", m => m.Value + "[aiueo]*");
+        return Regex.Replace(input, @"(\b\w|\B\w)", m => m.Value + "[aiueo]*");
     }
 
     public static string convertToRegexPattern(string input){
@@ -54,6 +54,6 @@ public class NameRegex
         Console.WriteLine("Time Elapsed checking: " + sp2.ElapsedMilliseconds + " ms");
         Console.WriteLine("Time Elapsed creating pattern: " + stopwatch.ElapsedMilliseconds + " ms");
     }
-    
+
 
 }
