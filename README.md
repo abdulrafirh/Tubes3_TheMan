@@ -19,6 +19,10 @@ Algoritme Boyer-Moore adalah salah satu algoritme string matching yang efisien d
 2. Browse to the project's folder and select the src.sln file inside of the src folder
 3. On the toolbar click Build -> Rebuild Solution
 
+# How to Set Up Fingerprint Data
+1. Download the SOCOFing database from this kaggle link https://www.kaggle.com/datasets/ruizgara/socofing
+2. Extract the data and place it inside the Data directory from the project's folder
+
 # How To Run
 1. Open the terminal in the project's folder
 2. Run the following script (make sure Docker is already running, if not launch it first)
