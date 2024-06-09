@@ -108,7 +108,10 @@ namespace WindowsFormsApp1
 
         private void SearchButton_Click(object sender, EventArgs e)
         {
-
+            if (selectedImagePath=="")
+            {
+                InputErrorMsg.Visible = true; return;
+            }
             string most_similar_image_path = "";
             bool found = false;
             string pattern = FingerprintProcessor.binaryToAscii(FingerprintProcessor.bmpToBinary(selectedImagePath));
