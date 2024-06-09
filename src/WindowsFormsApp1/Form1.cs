@@ -52,7 +52,7 @@ namespace WindowsFormsApp1
             int i = 600;
             while (i-- > 0)
             {
-                List<string> image_paths = FindFiles.GetRelativeFilePaths(Path.GetFullPath("./../../../../data/SOCOfing/Real"), i + "__*");
+                List<string> image_paths = FindFiles.GetRelativeFilePaths(Path.GetFullPath("./../../../../data/SOCOfing/Real"), (i+1) + "__*");
                 foreach (string path in image_paths)
                 {
                     string binary = FingerprintProcessor.bmpToBinary(prefix + path);
@@ -86,8 +86,9 @@ namespace WindowsFormsApp1
                 InputImage.ImageLocation = selectedImagePath;
                 OutputImage.ImageLocation = "./../../../asset/catloading.gif";
                 InputImage.SizeMode = PictureBoxSizeMode.CenterImage;
-                OutputImage.SizeMode = PictureBoxSizeMode.CenterImage;
                 OutputImage.SizeMode = PictureBoxSizeMode.StretchImage;
+                InputImage.Visible = true;
+                OutputImage.Visible = true;
 
                 SearchResultText.Text = "Waiting...";
                 SearchResultText.SelectAll();
@@ -211,6 +212,7 @@ namespace WindowsFormsApp1
                 OutputImage.ImageLocation = prefix + most_similar_image_path;
                 InputImage.SizeMode = PictureBoxSizeMode.CenterImage;
                 OutputImage.SizeMode = PictureBoxSizeMode.CenterImage;
+
             }
 
             if (found)
@@ -265,7 +267,7 @@ namespace WindowsFormsApp1
                 this.alg = "kmp";
             }
         }
-        
+
         private void richTextBox2_TextChanged(object sender, EventArgs e)
         {
 
