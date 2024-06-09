@@ -1,13 +1,12 @@
-﻿using MySqlX.XDevAPI.Common;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace WindowsFormsApp1
+namespace DatabaseFaker
 {
-    internal sealed class AlayGenerator
+    public class AlayGenerator
     {
         private AlayGenerator() { }
 
@@ -51,12 +50,13 @@ namespace WindowsFormsApp1
         }
 
         public string makeAlay(string name)
-        {   
+        {
             StringBuilder result = new StringBuilder(name);
-            for(int i = 0; i < result.Length; i++)
+            for (int i = 0; i < result.Length; i++)
             {
                 int roll = R.Next(0, 100);
-                if (IsVowel(result[i])){
+                if (IsVowel(result[i]))
+                {
                     if (roll < 10 && i != 0)
                     {
                         result = result.Remove(i, 1);
@@ -71,7 +71,8 @@ namespace WindowsFormsApp1
                         result[i] = Char.ToUpper(result[i]) == result[i] ? Char.ToLower(result[i]) : Char.ToUpper(result[i]);
                     }
                 }
-                else if (result[i] != ' '){
+                else if (result[i] != ' ')
+                {
                     if (roll < 40)
                     {
                         result[i] = alayConverter[result[i]];

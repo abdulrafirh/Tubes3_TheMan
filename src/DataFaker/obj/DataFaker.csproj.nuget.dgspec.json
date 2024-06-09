@@ -1,0 +1,25 @@
+{
+  "format": 1,
+  "restore": {
+    "C:\\Users\\HP\\Documents\\Tugas_Coolyeah\\semester_4\\stima\\tubes3\\Tubes3_TheMan\\src\\DataFaker\\DataFaker.csproj": {}
+  },
+  "projects": {
+    "C:\\Users\\HP\\Documents\\Tugas_Coolyeah\\semester_4\\stima\\tubes3\\Tubes3_TheMan\\src\\DataFaker\\DataFaker.csproj": {
+      "restore": {
+        "projectUniqueName": "C:\\Users\\HP\\Documents\\Tugas_Coolyeah\\semester_4\\stima\\tubes3\\Tubes3_TheMan\\src\\DataFaker\\DataFaker.csproj",
+        "projectPath": "C:\\Users\\HP\\Documents\\Tugas_Coolyeah\\semester_4\\stima\\tubes3\\Tubes3_TheMan\\src\\DataFaker\\DataFaker.csproj",
+        "packagesPath": "C:\\Users\\HP\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\HP\\Documents\\Tugas_Coolyeah\\semester_4\\stima\\tubes3\\Tubes3_TheMan\\src\\DataFaker\\obj\\",
+        "projectStyle": "PackageReference",
+        "configFilePaths": [
+          "C:\\Users\\HP\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        ],
+        "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "https://api.nuget.org/v3/index.json": {}
+        }
+      }
+    }
+  }
+}

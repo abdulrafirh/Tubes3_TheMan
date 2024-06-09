@@ -19,8 +19,8 @@ namespace WindowsFormsApp1
             string server = "localhost";
             string database = "tubes3";
             string uid = "root";
-            string password = "pwdbaldy";
-            string port = "3306";
+            string password = "thefunni";
+            string port = "12345";
             string connectionString;
             connectionString = "SERVER=" + server + ";" + "PORT=" + port + ";" + "DATABASE=" +
             database + ";" + "UID=" + uid + ";" + "PASSWORD=" + password + ";";

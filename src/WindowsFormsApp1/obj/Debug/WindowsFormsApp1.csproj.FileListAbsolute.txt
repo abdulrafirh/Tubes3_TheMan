@@ -94,3 +94,4 @@ C:\Users\Aldy\Source\Repos\Tubes3_TheMan\src\WindowsFormsApp1\obj\Debug\WindowsF
 C:\Users\Aldy\Source\Repos\Tubes3_TheMan\src\WindowsFormsApp1\obj\Debug\WindowsFormsApp1.exe
 C:\Users\Aldy\Source\Repos\Tubes3_TheMan\src\WindowsFormsApp1\obj\Debug\WindowsFormsApp1.pdb
 C:\Users\Aldy\Source\Repos\Tubes3_TheMan\src\WindowsFormsApp1\obj\Debug\WindowsFormsApp1.LoadingScreen.resources
+C:\Users\HP\Documents\Tugas_Coolyeah\semester_4\stima\tubes3\Tubes3_TheMan\src\WindowsFormsApp1\obj\Debug\WindowsFormsApp1.LoadingScreen.resources

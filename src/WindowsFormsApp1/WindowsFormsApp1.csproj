@@ -104,11 +104,10 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="bahasaAlay.cs" />
     <Compile Include="Biodata.cs" />
     <Compile Include="bmpProcessing.cs" />
-    <Compile Include="consoleTest.cs" />
-    <Compile Include="faker.cs" />
+    <Compile Include="ConsoleTest.cs" />
+    <Compile Include="Encryption.cs" />
     <Compile Include="FileProcessing.cs" />
     <Compile Include="BiodataDB.cs" />
     <Compile Include="FingerPrintDB.cs" />

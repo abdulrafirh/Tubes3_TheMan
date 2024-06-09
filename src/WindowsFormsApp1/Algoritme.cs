@@ -287,32 +287,6 @@ namespace AlgorithmNamespace
             }
             Console.WriteLine("Time Elapsed: " + timeElapsed);
         }
-
-
-        static void Main(string[] args)
-        {
-            Console.WriteLine("Current Directory: " + System.IO.Directory.GetCurrentDirectory());
-            string imagePath = "../willdeletelater/test.BMP";
-
-            string binaryData = FingerprintProcessor.bmpToBinary(imagePath);
-            string middleBinary = FingerprintProcessor.get_middle_binary(binaryData);
-
-            string pattern = FingerprintProcessor.binaryToAscii(middleBinary);
-
-            string imagePath2 = "../willdeletelater/test.BMP";
-
-            string binary2 = FingerprintProcessor.bmpToBinary(imagePath2);
-            string text = FingerprintProcessor.binaryToAscii(binary2);
-            Console.WriteLine("Text: " + text);
-            Console.WriteLine("Pattern: " + pattern);
-            bool bmResult = FingerprintProcessor.kmpSearch(text, pattern);
-            Console.WriteLine("Boyer-Moore Search Result: " + bmResult);
-
-            bool kmpResult = FingerprintProcessor.kmpSearch(text, pattern);
-            Console.WriteLine("Knuth-Morris-Pratt Search Result: " + kmpResult);
-
-
-        }
     }
 
 
