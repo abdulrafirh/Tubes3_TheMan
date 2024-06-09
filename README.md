@@ -17,4 +17,8 @@ docker-compose up -d
 ```bash
 ./run.bat
 ```
+6. When done using the program run the following script to stop the docker and erase the database data
+```bash
+docker-compose down -v
+```
    
