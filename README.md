@@ -5,7 +5,7 @@
 
 # How To Run
 1. Open the terminal in the project's folder
-2. Run the following script
+2. Run the following script (make sure Docker is already running, if not launch it first)
 ```bash
 docker-compose up -d
 ```
