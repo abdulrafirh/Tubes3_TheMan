@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.imageInput = new System.Windows.Forms.Button();
             this.openFileDialog1 = new System.Windows.Forms.OpenFileDialog();
             this.TitleText = new System.Windows.Forms.TextBox();
@@ -39,8 +40,11 @@
             this.YourImageText = new System.Windows.Forms.RichTextBox();
             this.SearchResultText = new System.Windows.Forms.RichTextBox();
             this.PerfCounterText = new System.Windows.Forms.RichTextBox();
+            this.InputErrorMsg = new System.Windows.Forms.RichTextBox();
+            this.form1BindingSource = new System.Windows.Forms.BindingSource(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.OutputImage)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.InputImage)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.form1BindingSource)).BeginInit();
             this.SuspendLayout();
             // 
             // imageInput
@@ -141,14 +145,15 @@
             this.SearchResultText.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.SearchResultText.Font = new System.Drawing.Font("Cambria Math", 12F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))));
             this.SearchResultText.HideSelection = false;
-            this.SearchResultText.Location = new System.Drawing.Point(443, 227);
+            this.SearchResultText.Location = new System.Drawing.Point(443, 192);
             this.SearchResultText.Name = "SearchResultText";
             this.SearchResultText.ReadOnly = true;
             this.SearchResultText.ScrollBars = System.Windows.Forms.RichTextBoxScrollBars.None;
-            this.SearchResultText.Size = new System.Drawing.Size(176, 29);
+            this.SearchResultText.Size = new System.Drawing.Size(176, 64);
             this.SearchResultText.TabIndex = 9;
             this.SearchResultText.Text = "SEARCH RESULT:";
             this.SearchResultText.Visible = false;
+            this.SearchResultText.TextChanged += new System.EventHandler(this.SearchResultText_TextChanged);
             // 
             // PerfCounterText
             // 
@@ -164,11 +169,30 @@
             this.PerfCounterText.Text = "The last calculation took: -";
             this.PerfCounterText.Visible = false;
             // 
+            // InputErrorMsg
+            // 
+            this.InputErrorMsg.BackColor = System.Drawing.SystemColors.Control;
+            this.InputErrorMsg.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.InputErrorMsg.Font = new System.Drawing.Font("Courier New", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.InputErrorMsg.ForeColor = System.Drawing.Color.Red;
+            this.InputErrorMsg.Location = new System.Drawing.Point(6, 79);
+            this.InputErrorMsg.Name = "InputErrorMsg";
+            this.InputErrorMsg.Size = new System.Drawing.Size(207, 33);
+            this.InputErrorMsg.TabIndex = 11;
+            this.InputErrorMsg.Text = "Your file is🗙 try again! -->";
+            this.InputErrorMsg.Visible = false;
+            this.InputErrorMsg.TextChanged += new System.EventHandler(this.richTextBox2_TextChanged);
+            // 
+            // form1BindingSource
+            // 
+            this.form1BindingSource.DataSource = typeof(WindowsFormsApp1.Form1);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(620, 429);
+            this.Controls.Add(this.InputErrorMsg);
             this.Controls.Add(this.PerfCounterText);
             this.Controls.Add(this.SearchResultText);
             this.Controls.Add(this.YourImageText);
@@ -184,6 +208,7 @@
             this.Load += new System.EventHandler(this.Form1_Load);
             ((System.ComponentModel.ISupportInitialize)(this.OutputImage)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.InputImage)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.form1BindingSource)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -201,6 +226,8 @@
         private System.Windows.Forms.RichTextBox SearchResultText;
         private System.Windows.Forms.RichTextBox YourImageText;
         private System.Windows.Forms.RichTextBox PerfCounterText;
+        private System.Windows.Forms.BindingSource form1BindingSource;
+        private System.Windows.Forms.RichTextBox InputErrorMsg;
     }
 }
 

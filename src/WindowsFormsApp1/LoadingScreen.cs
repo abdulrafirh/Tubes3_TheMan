@@ -19,6 +19,7 @@ namespace WindowsFormsApp1
             done_count = 0;
             this.total = total;
             InitializeComponent();
+            this.pictureBox1.ImageLocation = "./../../../asset/mikuloading.gif";
             this.TopMost = true;
         }
 

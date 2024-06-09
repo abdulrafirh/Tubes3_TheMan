@@ -48,10 +48,11 @@
             // 
             // pictureBox1
             // 
-            this.pictureBox1.ImageLocation = "https://media.tenor.com/XjWq1YsrqOQAAAAM/hatsune-miku.gif";
+            this.pictureBox1.ImageLocation = "";
             this.pictureBox1.Location = new System.Drawing.Point(75, 12);
             this.pictureBox1.Name = "pictureBox1";
             this.pictureBox1.Size = new System.Drawing.Size(218, 145);
+            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pictureBox1.TabIndex = 1;
             this.pictureBox1.TabStop = false;
             // 

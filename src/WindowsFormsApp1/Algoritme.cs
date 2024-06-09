@@ -25,7 +25,7 @@ namespace AlgorithmNamespace
             {
                 throw new FileNotFoundException($"The file {imagePath} does not exist.");
             }
-            const int threshold = 70;
+            const int threshold = 127;
             Bitmap temp = new Bitmap(imagePath);
             LockBitmap img = new LockBitmap(temp);
             img.LockBits();
@@ -224,10 +224,10 @@ namespace AlgorithmNamespace
 
             var result = new System.Text.StringBuilder();
 
-            for (int i = 0; i < 4; i++)
+            for (int i = 0; i < 8; i++)
             {
                 int rowIndex = middleRowIndex + i * charsPerRow;
-                string middleChars = text.Substring(rowIndex + 1, 4);
+                string middleChars = text.Substring(rowIndex + 1, 8);
 
 
                 result.Append(middleChars);
@@ -237,7 +237,7 @@ namespace AlgorithmNamespace
         }
         public static float calculateSimilarity(string text1, string text2)
         {
-            int lcs = longestCommonSS(text1, text2);
+            int lcs = longestCommonSS(getMiddle16(text1), getMiddle16(text2));
             int len1 = text1.Length;
             int len2 = text2.Length;
 
@@ -339,9 +339,17 @@ namespace AlgorithmNamespace
             return Regex.Replace(input, @"\b(\w)(\w*)\b", m => m.Groups[1].Value.ToUpper() + m.Groups[2].Value.ToLower());
         }
 
-        public static string addOptionalVowel(string input)
+/*        public static string addOptionalVowel(string input)
         {
             return Regex.Replace(input, @"(\b\w|\B\w)", m => m.Value + "[aiueo]*");
+        }*/
+
+        public static string addOptionalVowel(string input)
+        {
+
+            string anu = Regex.Replace(input, @"\b\w", m => "[" + m.Value.ToLower() + m.Value.ToUpper() + "]");
+            anu = Regex.Replace(anu, @"(\w|\[\w\w\])", "$1[aiueo]*");
+            return anu;
         }
 
         public static string convertToRegexPattern(string input)
