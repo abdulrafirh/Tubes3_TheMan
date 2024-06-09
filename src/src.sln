@@ -9,6 +9,8 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution 
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DatabaseFaker", "DatabaseFaker\DatabaseFaker.csproj", "{2868B219-4C3E-428C-8BB7-155C430D1522}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EncryptionConverter", "EncryptionConverter\EncryptionConverter.csproj", "{0E808369-BA16-4FE4-9869-37E4B1ED9864}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -23,6 +25,10 @@ Global
 		{2868B219-4C3E-428C-8BB7-155C430D1522}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{2868B219-4C3E-428C-8BB7-155C430D1522}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{2868B219-4C3E-428C-8BB7-155C430D1522}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0E808369-BA16-4FE4-9869-37E4B1ED9864}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0E808369-BA16-4FE4-9869-37E4B1ED9864}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0E808369-BA16-4FE4-9869-37E4B1ED9864}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0E808369-BA16-4FE4-9869-37E4B1ED9864}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
