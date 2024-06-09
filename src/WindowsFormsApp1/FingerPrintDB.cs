@@ -15,8 +15,8 @@ namespace WindowsFormsApp1
             if (OpenConnection())
             {
                 MySqlCommand cmd = new MySqlCommand("INSERT INTO sidik_jari VALUES (@berkas_citra, @nama)", connection);
-                cmd.Parameters.AddWithValue("berkas_citra", berkas_citra);
-                cmd.Parameters.AddWithValue("nama", nama);
+                cmd.Parameters.AddWithValue("berkas_citra", Encryption.getGlobalInstance().EncryptString(berkas_citra));
+                cmd.Parameters.AddWithValue("nama", Encryption.getGlobalInstance().EncryptString(nama));
                 cmd.ExecuteNonQuery();
                 CloseConnection();
             }
@@ -24,29 +24,28 @@ namespace WindowsFormsApp1
 
         public static string Find(string berkas_citra)
         {
+            Dictionary<String, String> map = All();
+            return map[berkas_citra];
+        }
+
+        public static Dictionary<String, String> All() {
+            Dictionary<String, String> result = new Dictionary<String, String>();
+
             if (OpenConnection())
             {
-                using (MySqlCommand cmd = new MySqlCommand("SELECT nama FROM sidik_jari WHERE berkas_citra = @berkas_citra", connection))
+                using (MySqlCommand cmd = new MySqlCommand("SELECT * FROM sidik_jari", connection))
                 {
-                    cmd.Parameters.AddWithValue("berkas_citra", berkas_citra);
                     using (var reader = cmd.ExecuteReader())
                     {
-                        if (reader.HasRows)
+                        while (reader.Read())
                         {
-                            reader.Read();
-                            var theName = reader.GetString(0);
-                            CloseConnection();
-                            return theName;
-                        }
-                        else
-                        {
-                            CloseConnection();
-                            return null;
+                            result.Add(Encryption.getGlobalInstance().DecryptString(reader.GetString(0)), Encryption.getGlobalInstance().DecryptString(reader.GetString(1)));
                         }
                     }
                 }
+                CloseConnection();
             }
-            return null;
+            return result;
         }
 
         public static void Clear()

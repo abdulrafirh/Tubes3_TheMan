@@ -2,6 +2,7 @@
 using System.IO;
 using System;
 using WindowsFormsApp1;
+using System.Drawing.Imaging;
 
 namespace DatabaseFaker
 {
@@ -14,6 +15,10 @@ namespace DatabaseFaker
             FingerPrintDB.Clear();
             for (int i = 1; i < 601; i++)
             {
+                if (i % 20 == 0)
+                {
+                    Console.WriteLine("Seeding Data [ " + i + "/600 " + ((float)((i - 1)/600.0 * 100)).ToString("00.00") + "% ]");
+                }
                 var GolonganDarah = new[] { "O", "A", "B", "AB", "O+", "A+", "B+", "AB+", "O-", "A-", "B-", "AB-" };
                 var Agama = new[] { "Islam", "Kristen Protestan", "Katolik", "Hindu", "Buddha", "Khonghucu", "Animisme", "Dinamisme", "Anime" };
                 var StatusMenikah = new[] { "Belum Menikah", "Menikah", "Cerai" };

@@ -8,8 +8,8 @@ namespace WindowsFormsApp1
 {
     internal class ConsoleTest
     {
-        static void Main() {
-            List<Biodata> users = BiodataDB.All();
-        }
+        //static void Main() {
+        //    List<Biodata> users = BiodataDB.All();
+        //}
     }
 }

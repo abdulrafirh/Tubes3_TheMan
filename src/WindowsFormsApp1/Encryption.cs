@@ -128,7 +128,6 @@ namespace WindowsFormsApp1
                 byteList.AddRange(chunkBytes);
 
                 if (chunkBytes.Length != 14) {
-                    Console.WriteLine("happen");
                     for (int i = 0; i < 14 - chunkBytes.Length; i++) {
                         byteList.Add(0);
                     }
