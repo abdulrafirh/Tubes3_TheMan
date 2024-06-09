@@ -49,8 +49,7 @@ namespace WindowsFormsApp1
 
         private void init_other_stuff(LoadingScreen ls)
         {
-            int i = 600;
-            while (i-- > 0)
+            for (int i = 0; i < 600; i++)
             {
                 List<string> image_paths = FindFiles.GetRelativeFilePaths(Path.GetFullPath("./../../../../data/SOCOfing/Real"), (i+1) + "__*");
                 foreach (string path in image_paths)
@@ -62,7 +61,6 @@ namespace WindowsFormsApp1
                 }
                 ls.update_percentage(10);
             }
-            i = 700;
         }
 
         private void ImageInputButton_Click(object sender, EventArgs e)
