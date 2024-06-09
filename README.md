@@ -10,6 +10,9 @@ Algoritme Knuth-Morris-Pratt (KMP) adalah salah satu algoritme yang efisien untu
 # Algoritme Boyer-Moore
 Algoritme Boyer-Moore adalah salah satu algoritme string matching yang efisien dan banyak digunakan, terutama ketika pola yang dicari relatif panjang dibandingkan dengan teks. Algoritme ini dibagi menjadi dua teknik, yaitu looking glass technique (temukan P (pattern) di T (teks)  dengan bergerak mundur melalui P, dimulai dari ujungnya)  dan character jump technique ( Teknik ini menggunakan tabel Last Occurrence untuk menentukan seberapa jauh pola dapat digeser saat terjadi ketidakcocokan).
 
+# Regular Expression
+Regular Expressions, atau yang lebih dikenal dengan sebutan Regex, adalah sebuah alat yang sangat bagus untuk mencocokkan pola teks atau string. Regex bekerja dengan mencocokkan teks dengan pattern atau pola yang diberikan. Regex memungkinkan pengguna untuk mencari, mengedit, dan memanipulasi teks dengan cara yang efisien dan fleksibel. 
+
 # Dependencies
 1. This program can only be run on Windows as it is a WinForms based application. If you would like to run it on Linux, for example, you will need to download either an emulator or an adapter software such as wine.
 2. You will need to have docker installed.
