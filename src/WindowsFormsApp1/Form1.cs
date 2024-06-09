@@ -114,7 +114,7 @@ namespace WindowsFormsApp1
             }
             string most_similar_image_path = "";
             bool found = false;
-            string pattern = FingerprintProcessor.binaryToAscii(FingerprintProcessor.bmpToBinary(selectedImagePath));
+            string pattern = FingerprintProcessor.binaryToAscii(FingerprintProcessor.get_middle_binary(FingerprintProcessor.bmpToBinary(selectedImagePath)));
 
             Stopwatch stopwatch = new Stopwatch();
             stopwatch.Start();
@@ -132,7 +132,7 @@ namespace WindowsFormsApp1
             }
 
             
-            
+            pattern = FingerprintProcessor.binaryToAscii((FingerprintProcessor.bmpToBinary(selectedImagePath)));
             SortedDictionary<float, List<int>> dict = new SortedDictionary<float, List<int>>();
             List<KeyValuePair<float, int>> top10 = new List<KeyValuePair<float, int>>();
             if (!found)

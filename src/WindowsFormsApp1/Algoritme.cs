@@ -79,9 +79,9 @@ namespace AlgorithmNamespace
         public static string get_middle_binary(string binaryString)
         {
             int midIdx = binaryString.Length / 2;
-            int startIdx = midIdx - (32 / 2);
+            int startIdx = midIdx - (64 / 2);
 
-            string midString = binaryString.Substring(startIdx, 32);
+            string midString = binaryString.Substring(startIdx, 64);
             return midString;
         }
 
